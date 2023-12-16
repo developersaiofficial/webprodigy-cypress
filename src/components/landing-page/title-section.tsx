@@ -8,7 +8,7 @@ interface TitleSectionProps {
 const TitleSection: React.FC<TitleSectionProps> = ({
   title,
   subheading,
-  pill
+  pill,
 }) => {
   return (
     <React.Fragment>
@@ -25,7 +25,7 @@ const TitleSection: React.FC<TitleSectionProps> = ({
         <article
           className="
         rounded-full
-        p-[10px]
+        p-[2px]
         text-sm
         dark:bg-gradient-to-r
         dark:from-colors-Foundation/brand-primaryblue
@@ -36,9 +36,33 @@ const TitleSection: React.FC<TitleSectionProps> = ({
             className="rounded-full 
            px-3
            py1
-           dark:bg-black">
-             {pill} </div>
+           dark:bg-black"
+          >
+            {pill}
+          </div>
         </article>
+        {subheading ? (
+          <>
+            <h2
+              className="
+          text-left
+          text-3xl
+          sm:text-5xl
+          md:text-center
+          font-semibold
+          "
+            >
+              {" "}
+              {title}{" "}
+            </h2>
+            <p className="dark:text-washed-purple-700  sm:max-w-[450px] md:text-center ">
+              {" "}
+              {subheading}{" "}
+            </p>
+          </>
+        ) : (
+          <h1 className="text-left text-4xl sm:text-6xl sm:max-w-[850px] md:text-center font-semibold "> {title} </h1>
+        )}
       </section>
     </React.Fragment>
   );
