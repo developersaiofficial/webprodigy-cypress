@@ -4,14 +4,18 @@ import Banner from "../../../public/appBanner.png";
 import Cal from "../../../public/cal.png";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { CLIENTS, USERS } from "../../lib/constants";
+import {
+  CLIENTS,
+  PRICING_CARDS,
+  PRICING_PLANS,
+  USERS,
+} from "../../lib/constants";
 import { v4 } from "uuid";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 import CustomCard from "@/components/landing-page/CustomCard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CardDescription, CardTitle } from "@/components/ui/card";
-
+import { CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card";
 const Homepage = () => {
   return (
     <>
@@ -24,7 +28,8 @@ const Homepage = () => {
                           sm:flex-col
                           gap-4
                           md:justify-center
-                          md:items-center">
+                          md:items-center"
+      >
         <TitleSection
           pill="✨ your workplce Perfected "
           title="All-In-One Colloboration and Productivity Platform"
@@ -157,7 +162,8 @@ const Homepage = () => {
        justify-center
        items-center
        flex-col
-       relative">
+       relative"
+      >
         <div
           className=" w-[30%]
         blur-[120px]
@@ -232,36 +238,106 @@ const Homepage = () => {
               )}
             >
               {USERS.map((testimonial, index) => (
-                <CustomCard key={testimonial.name} className="
+                <CustomCard
+                  key={testimonial.name}
+                  className="
                 w-[500px]
                 shrink-0
                 rounded-xl
                 dark:bg-gradient-to-t
                 dark:from-border
                 dark:to-background "
-                cardHeader={
-                <div className=" flex
+                  cardHeader={
+                    <div
+                      className=" flex
                  items-center
                  gap-4
-                 "> 
-                 <Avatar>
-                  <AvatarImage src={`/avatars/${index + 1}.png`} />
-                  <AvatarFallback>AV</AvatarFallback>
-                 </Avatar>
-                 <div>
-                  <CardTitle className="text-foreground"> {testimonial.name} </CardTitle>
-                  <CardDescription className="dark:text-purple-800"> {testimonial.name.toLocaleLowerCase()} </CardDescription>
-                </div>
-                </div>}
-                cardContent = {<p className="dark:text-purple-400"> {testimonial.message} </p>}
+                 "
+                    >
+                      <Avatar>
+                        <AvatarImage src={`/avatars/${index + 1}.png`} />
+                        <AvatarFallback>AV</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <CardTitle className="text-foreground">
+                          {" "}
+                          {testimonial.name}{" "}
+                        </CardTitle>
+                        <CardDescription className="dark:text-purple-800">
+                          {" "}
+                          {testimonial.name.toLocaleLowerCase()}{" "}
+                        </CardDescription>
+                      </div>
+                    </div>
+                  }
+                  cardContent={
+                    <p className="dark:text-purple-400">
+                      {" "}
+                      {testimonial.message}{" "}
+                    </p>
+                  }
                 ></CustomCard>
               ))}
             </div>
           ))}
         </div>
       </section>
+      <section
+        className="mt-20
+      px-4 
+      sm:px-6 "
+      >
+        <TitleSection
+          title="The Perfect Plan for you "
+          subheading="Experience all the benifites of our platform . select a plan."
+          pill="Pricing"
+        />
+        <div
+          className="flex
+    flex-col-reverse
+    sm:flex-row
+    gap-4
+    justify-center
+    sm:items-stretch
+    item-center 
+    mt-10"
+        >
+          {PRICING_CARDS.map((card) => (
+            <CustomCard
+              key={card.planType}
+              className={clsx(
+                "w-[300px] rounded-2xl dark:bg-black/95 background-blur-3xl",
+                {
+                  "border-purple-500/70":
+                    card.planType === PRICING_PLANS.proplan,
+                }
+              )}
+              cardHeader={
+                <CardTitle className="text-2xl font-semibold"> 
+                 {card.planType} </CardTitle>
+              }
+              cardContent={
+                <CardContent> {card.description} </CardContent>
+              }
+              cardFooter={
+                <CardFooter> {card.price} </CardFooter>
+              }
+            ></CustomCard>
+          ))}
+        </div>
+      </section>
     </>
   );
 };
-
 export default Homepage;
+
+
+
+
+
+
+
+
+
+
+
