@@ -1,9 +1,11 @@
 import TitleSection from "../../components/landing-page/title-section";
 import React from "react";
 import Banner from "../../../public/appBanner.png";
+import Cal from "../../../public/cal.png";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { CLIENTS } from "../../lib/constants";
+import { UUID } from "crypto";
 
 const Homepage = () => {
   return (
@@ -78,7 +80,7 @@ const Homepage = () => {
           ></div>
         </div>
       </section>
-      <section className="relative">
+      <section className="relative ">
         <div
           className="overflow-hidden
                      flex
@@ -94,6 +96,7 @@ const Homepage = () => {
                      after:w-20
                      after:z-10
                      after:absolute
+                     after:overflow-hidden
                      
                      before:content['']
                      before:dark:from-brand-dark
@@ -106,6 +109,7 @@ const Homepage = () => {
                      before:w-20
                      before:z-10
                      before:absolute
+                     before:overflow-hidden
                      "
         >
           {[...Array(2)].map((arr) => (
@@ -143,20 +147,20 @@ const Homepage = () => {
       </section>
       <section
         className=" px-4
+        mt-10
        sm:px-6
        flex
        justify-center
        items-center
        flex-col
-       relative
-       "
+       relative"
       >
         <div
           className=" w-[30%]
         blur-[120px]
         rounded-full
         h-32
-        absolute
+        relative
         bg-purple-400
         -z-10
         top-22"
@@ -166,6 +170,57 @@ const Homepage = () => {
           subheading="capture your ideas, thoughts and meetings notes in a string"
           pill="features"
         />
+        <div
+          className="
+        mt-10
+        max-w-[450px]
+        flex
+        justify-center
+        items-center
+        relative
+        sm:ml-0
+        rounded-2xl
+        border-8
+        border-washed-purple-300
+        border-opacity-10
+        "
+        >
+          <Image src={Cal} alt="Application Banner" className="rounded-2xl" />
+        </div>
+      </section>
+      <section className="relative">
+        <div
+          className=" w-full
+        blur-[120px]
+        rounded-full
+        h-32
+        relative
+        bg-purple-400
+        -z-10
+        top-56"
+        />
+        <div
+          className="mt-20
+          px-4
+          sm:px-6 
+          flex
+          flex-col
+          overflow-x-hidden
+          overflow-visible
+        "
+        >
+          <TitleSection
+            title="Trusted by all"
+            subheading="Join thousands of satisfied users who rely on our platform for their 
+            personal and professional productivity needs."
+            pill="Testimonials"
+          />
+          {[...Array(2)].map((arr,index) =>(
+            <div key={randomUUID()} className="
+            
+            "></div>
+          ))}
+        </div>
       </section>
     </>
   );
