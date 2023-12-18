@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormSchema } from "../../../lib/types";
+import { FormSchema } from "@/lib/types";
+
 
 const LoginPage = () => {
   const router = useRouter();
@@ -22,8 +23,9 @@ const LoginPage = () => {
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit: SubmitHandler<z.infer<typeof FormSchema>> = async (
-    foemData
+    formData
   ) => {};
+  
 
   return <div>LoginPage</div>;
 };
